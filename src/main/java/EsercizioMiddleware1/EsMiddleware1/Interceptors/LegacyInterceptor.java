@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 public class LegacyInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (request.getRequestURI().contains("/legacy")){
-            response.setStatus(404);
-            throw new Exception(" Impossibile fare la chiamata " + (HttpServletResponse.SC_NOT_FOUND));
-        }
-        return true;
+         if (request.getRequestURI().contains("/legacy")){
+             System.out.println("chiamata avvenuta con successo");
+         }else {
+             response.setStatus(404);
+             throw new Exception("impossibile fare la chiamata ");
+         }
+         return true;
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
